@@ -2,7 +2,7 @@
 //  MAPD714 F2022
 //  Assignment 4
 //  ToDo List App
-//  Part 1 - Create the app UI
+//
 //  Group 9
 //  Member: Suen, Chun Fung (Alan) 301277969
 //          Sum, Chi Hung (Samuel) 300858503

@@ -25,17 +25,10 @@ class RootViewController: UITableViewController {
         super.viewDidLoad()
         toDoList = ToDoList.sharedToDoList
 
-        //Init table view and cells
         tableView.register(ToDoListViewCell.nib(), forCellReuseIdentifier: ToDoListViewCell.identifier)
         tableView.dataSource = self
-        //let preferredTableViewFont = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
-        //cellPointSize = preferredTableViewFont.pointSize
-        //tableView.estimatedRowHeight = cellPointSize
         tableView.rowHeight = 70
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem!.tintColor = Utility.getUIColor("#FF9292")
     }
@@ -71,14 +64,18 @@ class RootViewController: UITableViewController {
         cell.delegate = self
         return cell
     }
-    /*
+    
+    // *****
+    // Additional functions to edit the table view
+    // *****
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-     */
-    /*
+     
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -86,11 +83,7 @@ class RootViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
     
         }
-        //else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        //}    
     }
-*/
 
     
     // Override to support rearranging the table view.
@@ -105,22 +98,13 @@ class RootViewController: UITableViewController {
         return true
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
     @IBAction func didPressedAddButton(_ sender: UIBarButtonItem) {
         print("didPressedAddButton.")
         toDoList.addBlankItem()
         tableView.reloadData()
     }
-
 
 }
 
@@ -134,7 +118,6 @@ extension RootViewController: ToDoListViewCellDelegate {
         print ("Button: \(tag)")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailScreen")
-        //self.present(vc, animated: true, completion: nil)
         self.navigationController?.pushViewController(vc,animated:true)
     }
     
